@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
     android:background="@drawable/bggg">
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -20,16 +21,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@drawable/edit_text_bg"
-        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawableLeft="@drawable/ic_baseline_account_circle"
         android:drawablePadding="10dp"
         android:elevation="3dp"
-        android:hint="Name"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +42,7 @@
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edit_text_bg"
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:drawablePadding="10dp"
@@ -49,10 +52,11 @@
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintWidth_percent="0.8" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSignIn"
         app:layout_constraintWidth_percent="0.4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -79,16 +83,30 @@
         app:layout_constraintStart_toStartOf="@id/password"
         app:layout_constraintVertical_bias="0.2"
         app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintTop_toBottomOf="@+id/button"/>
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn"/>
+
     <TextView
+        android:id="@+id/textViewSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:textColor="@color/blue"
         android:textSize="19sp"
         android:textStyle="bold"
-        android:onClick="signup"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <!--progress bar as a loading indicator-->
+    <ProgressBar
+        android:id="@+id/idPBLoadingSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/progress_back"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
