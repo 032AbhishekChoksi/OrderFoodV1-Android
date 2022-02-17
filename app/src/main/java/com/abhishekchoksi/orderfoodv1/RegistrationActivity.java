@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -24,6 +25,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private Button btnSignUp;
     private ProgressBar loadingPB;
     private FirebaseAuth mAuth;
+    private SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,22 @@ public class RegistrationActivity extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btnSignUp);
         loadingPB = findViewById(R.id.idPBLoading);
         mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
+            finish();
+        }
+
+        sharedPreferences = getSharedPreferences("onBoardingScreen",MODE_PRIVATE);
+        boolean isFirstTime = sharedPreferences.getBoolean("firstTime",true);
+        if(isFirstTime){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("firstTime",false);
+            editor.commit();
+
+            startActivity(new Intent(RegistrationActivity.this,OnBoardingActivity.class));
+            finish();
+        }
 
         // adding click listener for Sign Up button.
         btnSignUp.setOnClickListener(new View.OnClickListener() {

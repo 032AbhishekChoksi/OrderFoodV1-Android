@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Order Food V1</string>
+
+    <string name="second_slide">Fast Delivery</string>
+    <string name="third_slide">Good Service</string>
+
+    <string name="description">User Authentication and CRUD Operation with Firebase Realtime Database in Android.</string>
+    <string name="first_slide">Choose Your Products</string>
 </resources>
